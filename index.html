@@ -295,7 +295,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="https://i.ibb.co/zh6YdvSf/IMG-1301-1.jpg" alt="Suphawit Siriwechdaruk" class="profile-img">
+            <img src="./images/profile_pic.JPG" alt="Suphawit Siriwechdaruk" class="profile-img">
             <h1>Suphawit Siriwechdaruk</h1>
             <p class="subtitle">Software Quality Assurance Engineer</p>
             <div class="contact-info">
@@ -561,12 +561,14 @@
     <script>
         // Add smooth scrolling for better user experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        if (anchor) {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
+            }
         });
 
         // Add intersection observer for animation on scroll
