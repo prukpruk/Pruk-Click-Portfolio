@@ -43,6 +43,11 @@
             border: 5px solid #667eea;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
         .profile-img:hover {
@@ -66,11 +71,19 @@
         }
 
         .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-row {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-row:last-child {
+            margin-bottom: 0;
         }
 
         .contact-item {
@@ -79,10 +92,17 @@
             gap: 5px;
             color: #34495e;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 8px 12px;
             background: rgba(102, 126, 234, 0.1);
-            border-radius: 25px;
+            border-radius: 20px;
             transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .contact-item small {
+            font-size: 0.75em;
+            color: #7f8c8d;
+            margin-left: 3px;
         }
 
         .contact-item:hover {
@@ -295,28 +315,48 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="./images/profile_pic.JPG" alt="Suphawit Siriwechdaruk" class="profile-img">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAC0ALQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAr//Z" alt="Suphawit Siriwechdaruk" class="profile-img">
             <h1>Suphawit Siriwechdaruk</h1>
-            <p class="subtitle">Software Quality Assurance Engineer</p>
+            <p class="subtitle">Quality Assurance Engineer</p>
             <div class="contact-info">
-                <a href="mailto:prukpruk@hotmail.com" class="contact-item">
-                    📧 prukpruk@hotmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/suphawit-siriwechdaruk/" class="contact-item" target="_blank">
-                    💼 LinkedIn
-                </a>
-                <a href="https://facebook.com/PiXyKuNg" class="contact-item" target="_blank">
-                    📱 Facebook
-                </a>
-                <a href="https://instagram.com/rellevart" class="contact-item" target="_blank">
-                    📷 Instagram
-                </a>
-                <span class="contact-item">
-                    📞 (+66)898966458
-                </span>
-                <span class="contact-item">
-                    📍 Bangkok, Thailand
-                </span>
+                <div class="contact-row">
+                    <a href="mailto:prukpruk@hotmail.com" class="contact-item">
+                        📧 prukpruk@hotmail.com
+                    </a>
+                    <span class="contact-item">
+                        📍 Bangkok, Thailand
+                    </span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-item">
+                        ☎️ (+66)898966458
+                    </span>
+                    <span class="contact-item">
+                        📞 (+66)655322669 <small>(0.5baht/min)</small>
+                    </span>
+                    <span class="contact-item">
+                        📱 +1(603)2821698 <small>($0.5USD/min)</small>
+                    </span>
+                </div>
+                <div class="contact-row">
+                    <a href="https://www.linkedin.com/in/suphawit-siriwechdaruk/" class="contact-item" target="_blank">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://facebook.com/PiXyKuNg" class="contact-item" target="_blank">
+                        📱 Facebook
+                    </a>
+                    <a href="https://instagram.com/rellevart" class="contact-item" target="_blank">
+                        📷 Instagram
+                    </a>
+                </div>
+                <div class="contact-row">
+                    <a href="https://www.facebook.com/prukconsulting/" class="contact-item" target="_blank">
+                        📞 Pruk Consulting Facebook
+                    </a>
+                    <a href="https://instagram.com/prukconsulting" class="contact-item" target="_blank">
+                        📸 Pruk Consulting Instagram
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -523,6 +563,10 @@
             <h2>Certifications & Awards</h2>
             <div class="certificates-grid">
                 <div class="certificate-item new-cert">
+                    <h3>2 Days Generative AI Mastermind Certificate</h3>
+                    <div class="certificate-year">July 2025</div>
+                </div>
+                <div class="certificate-item new-cert">
                     <h3>ISTQB Foundation Testing</h3>
                     <div class="certificate-year">2025</div>
                 </div>
@@ -561,14 +605,12 @@
     <script>
         // Add smooth scrolling for better user experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        if (anchor) {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
-            }
         });
 
         // Add intersection observer for animation on scroll
@@ -593,6 +635,84 @@
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // Load and display profile image using file input simulation
+        function loadProfileImage() {
+            // Create a file input element (hidden) to allow user to select the image
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.style.display = 'none';
+            
+            // Set up a placeholder image initially
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSIjZjBmMGYwIi8+CjxjaXJjbGUgY3g9IjkwIiBjeT0iNzAiIHI9IjMwIiBmaWxsPSIjNjY3ZWVhIi8+CjxwYXRoIGQ9Ik02MCA1MEg5MEgxMjBWNjBIMTMwVjcwSDEzNVY4MEgxNDBWOTBIMTQ1VjEwMEgxNTBWMTEwSDkwSDMwVjEwMEgzNVY5MEg0MFY4MEg0NVY3MEg1MFY2MEg2MFY1MFoiIGZpbGw9IiM2NjdlZWEiLz4KPHRleHQgeD0iOTAiIHk9IjE0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzY2N2VlYSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IkFyaWFsIj5DbGljayB0byBhZGQgcGhvdG88L3RleHQ+Cjwvc3ZnPg==';
+            
+            // Add click handler to profile image container to select file
+            const profileContainer = document.getElementById('profileImageContainer');
+            profileContainer.style.cursor = 'pointer';
+            profileContainer.title = 'Click to upload your profile picture';
+            
+            // Add visual feedback for hover
+            profileContainer.addEventListener('mouseenter', () => {
+                profileContainer.style.opacity = '0.8';
+            });
+            
+            profileContainer.addEventListener('mouseleave', () => {
+                profileContainer.style.opacity = '1';
+            });
+            
+            profileContainer.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Profile container clicked'); // Debug log
+                fileInput.click();
+            });
+            
+            // Handle file selection
+            fileInput.addEventListener('change', (event) => {
+                console.log('File input changed'); // Debug log
+                const file = event.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    console.log('Valid image file selected:', file.name); // Debug log
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        profileImage.src = e.target.result;
+                        console.log('Image loaded successfully'); // Debug log
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    console.log('No valid image file selected'); // Debug log
+                }
+            });
+            
+            document.body.appendChild(fileInput);
+        }
+
+        // Add mobile-specific contact info layout
+        function adjustContactLayout() {
+            const contactRows = document.querySelectorAll('.contact-row');
+            if (window.innerWidth <= 768) {
+                contactRows.forEach(row => {
+                    row.style.flexDirection = 'column';
+                    row.style.alignItems = 'center';
+                    row.style.gap = '10px';
+                });
+            } else {
+                contactRows.forEach(row => {
+                    row.style.flexDirection = 'row';
+                    row.style.alignItems = 'center';
+                    row.style.gap = '15px';
+                });
+            }
+        }
+
+        // Load profile image functionality
+        loadProfileImage();
+        
+        // Adjust contact layout on load and resize
+        adjustContactLayout();
+        window.addEventListener('resize', adjustContactLayout);
 
         // Header animation
         setTimeout(() => {
