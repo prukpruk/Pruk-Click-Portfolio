@@ -311,6 +311,118 @@
         .certificate-item {
             position: relative;
         }
+
+        .contact-form-container {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-send {
+            display: inline-block;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-send:active {
+            transform: translateY(0);
+        }
+
+        .btn-send:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(46, 204, 113, 0.15);
+            color: #27ae60;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .contact-nav-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -356,6 +468,11 @@
                     </a>
                     <a href="https://instagram.com/prukconsulting" class="contact-item" target="_blank">
                         📸 Pruk Consulting Instagram
+                    </a>
+                </div>
+                <div class="contact-row">
+                    <a href="#contact" class="contact-nav-link">
+                        ✉️ Contact Me
                     </a>
                 </div>
             </div>
@@ -634,6 +751,37 @@
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <div class="contact-form-container">
+                <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <input type="hidden" name="timestamp" id="form-timestamp" />
+                    <p style="display:none">
+                        <label>Don't fill this: <input name="bot-field" /></label>
+                    </p>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject of your message" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-send" id="btn-send">Send</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -670,14 +818,54 @@
             observer.observe(section);
         });
 
-        // Load and display profile image using file input simulation
-        function loadProfileImage() {
-            // Create a file input element (hidden) to allow user to select the image
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.style.display = 'none';
-            
-            // Set up a placeholder image initially
-            const profileImage = document.getElementById('profileImage');
-            profileImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBma
+        // Contact form submission with timestamp
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('btn-send');
+            const statusDiv = document.getElementById('form-status');
+
+            // Set date and timestamp
+            const now = new Date();
+            document.getElementById('form-timestamp').value = now.toLocaleString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                timeZoneName: 'short'
+            });
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                if (response.ok) {
+                    statusDiv.textContent = 'Thank you! Your message has been sent successfully.';
+                    statusDiv.className = 'form-status success';
+                    contactForm.reset();
+                    btn.disabled = true;
+                    btn.textContent = 'Message Sent';
+                } else {
+                    statusDiv.textContent = 'Something went wrong. Please try again.';
+                    statusDiv.className = 'form-status error';
+                    btn.disabled = false;
+                    btn.textContent = 'Send';
+                }
+            } catch (error) {
+                statusDiv.textContent = 'Network error. Please check your connection and try again.';
+                statusDiv.className = 'form-status error';
+                btn.disabled = false;
+                btn.textContent = 'Send';
+            }
+        });
+    </script>
+</body>
+</html>
